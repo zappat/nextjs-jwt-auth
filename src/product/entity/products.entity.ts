@@ -5,12 +5,12 @@ export class Product extends BaseModel {
   @prop({
     required: [true, 'Name is required'],
   })
-  name: string;
+    name: string;
 
   @prop({
     required: [true, 'Description is required'],
   })
-  description: string;
+  description: strings;
 
   static get model(): ModelType<Product> {
     return new Product().getModelForClass(Product, { schemaOptions });
