@@ -9,7 +9,7 @@ export class ConfigurationService {
 
   constructor() {
     const result = dotenv.config();
-      if (result.error) {
+    if (result.error) {
       throw result.error;
     }
   }
