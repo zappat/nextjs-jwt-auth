@@ -5,7 +5,7 @@ export class Product extends BaseModel {
   @prop({
     required: [true, 'Name is required'],
   })
-  name: string;
+    name: string;
 
   @prop({
     required: [true, 'Description is required'],
