@@ -1,11 +1,4 @@
-import {
-  IsBoolean,
-  IsNotEmpty,
-  IsString,
-  Matches,
-  MaxLength,
-  MinLength,
-} from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateProductDto {
   @IsNotEmpty({

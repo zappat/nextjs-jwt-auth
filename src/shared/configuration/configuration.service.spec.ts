@@ -8,7 +8,7 @@ describe('ConfigurationService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [ConfigurationService],
     }).compile();
-    
+
     service = module.get<ConfigurationService>(ConfigurationService);
   });
 

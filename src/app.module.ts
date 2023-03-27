@@ -9,7 +9,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './product/product.module';
 
-@Module({  
+@Module({
   imports: [
     ConfigModule.forRoot(),
     SharedModule,

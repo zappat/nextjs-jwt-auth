@@ -36,7 +36,7 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalFilters(new HttpExceptionFilter());
-  
+
   await app.listen(AppModule.port);
 
   let baseUrl = app.getHttpServer().address().address;
