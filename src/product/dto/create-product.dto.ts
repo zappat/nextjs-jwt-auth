@@ -9,5 +9,5 @@ export class CreateProductDto {
   @IsNotEmpty({
     message: 'Product Description is required',
   })
-  description: string;
+      description: string;
 }
