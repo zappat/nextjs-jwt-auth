@@ -82,7 +82,7 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "src/*.{js,jsx}": ["eslint . --fix", "prettier --write ."]
+    "src/*.{js,jsx,ts,tsx}": ["eslint . --fix", "prettier --write ."]
   },
   "husky": {
     "hooks": {
