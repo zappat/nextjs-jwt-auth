@@ -32,7 +32,7 @@ export class AuthService {
     });
     const user = createdUser.toObject() as User;
     delete user.password;
-    delete user["_id"];
+    delete user['_id'];
 
     return {
       user: user,

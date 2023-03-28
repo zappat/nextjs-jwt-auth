@@ -66,7 +66,7 @@ export class AuthController {
     if (errMessage) {
       throw new BadRequestException(errMessage);
     }
-    
+
     return { user, accessToken };
   }
 }
