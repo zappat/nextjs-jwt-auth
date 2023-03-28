@@ -30,7 +30,7 @@ export class ConfigurationService {
     return process.env.MONGO_URI;
   }
 
-  get JWT() {
+  static get JWT() {
     return {
       Key: process.env.JWT_KEY || 'DEMO_KEY',
       AccessTokenTtl: parseInt(process.env.ACCESS_TOKEN_TTL, 10) || 60 * 5, // 5m
