@@ -59,11 +59,11 @@ export class AuthService {
     if (!isMatchPassword) {
       return { user: null, accessToken: '', errMessage: 'Invalid credentials' };
     }
-
+    
+    const accessToken = await this.createAccessToken(user, req, ip);
     delete user.password;
     delete user['_id'];
-    const accessToken = await this.createAccessToken(user, req, ip);
-
+    
     return { user, accessToken, errMessage: '' };
   }
 
