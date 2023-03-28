@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcryptjs';
 import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import { Request } from 'express';
 import { SignupDto } from './dto/signup.dto';
-import { JwtPayloadDto } from './dto/jwt-payload.dto';
+import { JwtPayloadDto } from './jwt-payload.dto';
 import { LoginDto } from './dto/login.dto';
 import { User } from '../user/entity/users.entity';
 
@@ -20,6 +20,7 @@ export class AuthService {
     signupDto: SignupDto,
   ): Promise<{ user: User; errMessage: string }> {
     const existUser = await this.getUser({ email: signupDto.email });
+
     if (existUser) {
       return { user: null, errMessage: 'User already exist' };
     }
@@ -29,8 +30,12 @@ export class AuthService {
       ...signupDto,
       password,
     });
+    const user = createdUser.toObject() as User;
+    delete user.password;
+    delete user["_id"];
+
     return {
-      user: createdUser.toObject() as User,
+      user: user,
       errMessage: '',
     };
   }
@@ -38,15 +43,15 @@ export class AuthService {
   public async login(
     req: Request,
     ip: string,
-    loginUserDto: LoginDto,
+    loginDto: LoginDto,
   ): Promise<{ user: User | null; accessToken: string; errMessage: string }> {
-    const user = await this.getUser({ email: loginUserDto.email });
+    const user = await this.getUser({ email: loginDto.email });
     if (!user) {
       return { user: null, accessToken: '', errMessage: 'No user was found' };
     }
 
     const isMatchPassword = await this.checkPassword(
-      loginUserDto.password,
+      loginDto.password,
       user.password,
     );
     if (!isMatchPassword) {

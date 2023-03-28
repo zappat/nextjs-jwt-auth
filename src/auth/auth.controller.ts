@@ -39,9 +39,11 @@ export class AuthController {
   @ApiCreatedResponse({})
   async register(@Body() signupDto: SignupDto): Promise<User> {
     const { user, errMessage } = await this.authService.createUser(signupDto);
+
     if (errMessage) {
       throw new BadRequestException(errMessage);
     }
+
     return user;
   }
 
@@ -64,6 +66,7 @@ export class AuthController {
     if (errMessage) {
       throw new BadRequestException(errMessage);
     }
+    
     return { user, accessToken };
   }
 }

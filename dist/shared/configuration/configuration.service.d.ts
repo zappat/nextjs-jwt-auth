@@ -5,8 +5,8 @@ export declare class ConfigurationService {
     get(key: string): string;
     get port(): string | number;
     get isDevelopment(): boolean;
-    get mongoUri(): string;
-    get JWT(): {
+    static get mongoUri(): string;
+    static get JWT(): {
         Key: string;
         AccessTokenTtl: number;
         RefreshTokenTtl: number;

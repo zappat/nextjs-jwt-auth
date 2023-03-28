@@ -9,7 +9,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class SignupDto {
   @ApiProperty({
-    example: 'Shahabuddin Ahmed',
+    example: 'Otto Molina',
     description: 'The name of the user',
     minLength: 2,
     maxLength: 100,
@@ -21,7 +21,7 @@ export class SignupDto {
   readonly firstName: string;
 
   @ApiProperty({
-    example: 'Shahabuddin Ahmed',
+    example: 'Otto Molina',
     description: 'The name of the user',
     minLength: 2,
     maxLength: 100,
@@ -33,7 +33,7 @@ export class SignupDto {
   readonly lastName: string;
 
   @ApiProperty({
-    example: 'shahabuddin.cse.ru@gmail.com',
+    example: 'otto.molina@gmail.com',
     description: 'The email of the User',
     format: 'email',
     maxLength: 100,
