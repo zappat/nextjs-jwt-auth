@@ -9,7 +9,6 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
@@ -17,6 +16,7 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/shared/guards/jwt-auth.guard';
 import { ProductCategoryDto } from './dto/product.category.dto';
 import { ProductDto } from './dto/product.dto';
 import { ProductCategory } from './entity/product.category.entity';
@@ -39,7 +39,7 @@ export class ProductController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Post('create')
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create one product' })
@@ -59,7 +59,7 @@ export class ProductController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Post('create-category')
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create one product Category' })
