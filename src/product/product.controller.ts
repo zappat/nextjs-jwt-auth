@@ -16,7 +16,7 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/shared/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../shared/guards/jwt-auth.guard';
 import { ProductCategoryDto } from './dto/product.category.dto';
 import { ProductDto } from './dto/product.dto';
 import { ProductCategory } from './entity/product.category.entity';
