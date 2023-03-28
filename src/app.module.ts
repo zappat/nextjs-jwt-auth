@@ -15,12 +15,12 @@ import { ProductModule } from './product/product.module';
     SharedModule,
     MongooseModule.forRootAsync({
       useFactory: async (configService: ConfigurationService) => ({
-        uri: configService.mongoUri,
+        uri: ConfigurationService.mongoUri,
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
+        // useCreateIndex: true, // this property not required
       }),
-      inject: [ConfigurationService],
+      inject: [],
     }),
     UserModule,
     AuthModule,

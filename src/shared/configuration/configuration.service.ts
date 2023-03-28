@@ -26,7 +26,7 @@ export class ConfigurationService {
     return this.currentEnv === 'development';
   }
 
-  get mongoUri(): string {
+  static get mongoUri(): string {
     return process.env.MONGO_URI;
   }
 
