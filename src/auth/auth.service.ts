@@ -46,6 +46,7 @@ export class AuthService {
     loginDto: LoginDto,
   ): Promise<{ user: User | null; accessToken: string; errMessage: string }> {
     const user = await this.getUser({ email: loginDto.email });
+    
     if (!user) {
       return { user: null, accessToken: '', errMessage: 'No user was found' };
     }
@@ -54,11 +55,15 @@ export class AuthService {
       loginDto.password,
       user.password,
     );
+
     if (!isMatchPassword) {
       return { user: null, accessToken: '', errMessage: 'Invalid credentials' };
     }
-
+    
+    delete user.password;
+    delete user['_id'];
     const accessToken = await this.createAccessToken(user, req, ip);
+
     return { user, accessToken, errMessage: '' };
   }
 
