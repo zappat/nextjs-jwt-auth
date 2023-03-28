@@ -54,7 +54,7 @@ export class AuthController {
     @Req() req: Request,
     @Ip() ip: string,
     @Body() loginDto: LoginDto,
-  ): Promise<User> {
+  ): Promise<{ user: User; accessToken: string }> {
     const { user, accessToken, errMessage } = await this.authService.login(
       req,
       ip,
@@ -64,6 +64,6 @@ export class AuthController {
     if (errMessage) {
       throw new BadRequestException(errMessage);
     }
-    return user;
+    return { user, accessToken };
   }
 }
