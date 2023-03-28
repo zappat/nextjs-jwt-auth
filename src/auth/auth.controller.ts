@@ -9,17 +9,12 @@ import {
   Ip,
   Body,
   BadRequestException,
-  UseGuards,
-  Patch,
-  Get,
-  Query,
 } from '@nestjs/common';
 import {
   ApiCreatedResponse,
   ApiOkResponse,
   ApiTags,
   ApiOperation,
-  ApiBearerAuth,
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';

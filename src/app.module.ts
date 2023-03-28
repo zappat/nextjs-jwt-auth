@@ -14,7 +14,7 @@ import { ProductModule } from './product/product.module';
     ConfigModule.forRoot(),
     SharedModule,
     MongooseModule.forRootAsync({
-      useFactory: async (configService: ConfigurationService) => ({
+      useFactory: async () => ({
         uri: ConfigurationService.mongoUri,
         useNewUrlParser: true,
         useUnifiedTopology: true,

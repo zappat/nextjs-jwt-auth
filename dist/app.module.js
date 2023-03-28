@@ -44,7 +44,7 @@ AppModule = AppModule_1 = __decorate([
             config_1.ConfigModule.forRoot(),
             shared_module_1.SharedModule,
             mongoose_1.MongooseModule.forRootAsync({
-                useFactory: async (configService) => ({
+                useFactory: async () => ({
                     uri: configuration_service_1.ConfigurationService.mongoUri,
                     useNewUrlParser: true,
                     useUnifiedTopology: true,
