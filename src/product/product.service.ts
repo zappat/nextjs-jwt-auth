@@ -1,3 +1,4 @@
+import { ProductImageDto } from './dto/product.image.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -22,7 +23,16 @@ export class ProductService {
   }
 
   async getAllProduct(): Promise<any> {
-    return await this.productModel.find({});
+    const products = await this.productModel.find({}).lean();
+    return products.map((product) => {
+      return {
+        ...product,
+        images: product.images.map(
+          (image) =>
+            `http://localhost:${process.env.PORT}/products/images/${image}`,
+        ),
+      };
+    });
   }
 
   async createProductCategory(
@@ -36,5 +46,16 @@ export class ProductService {
 
   async getAllProductCategory(): Promise<any> {
     return await this.productCategoryModel.find({});
+  }
+
+  public async uploadAvatar(
+    productImageDto: ProductImageDto,
+    avatars: any,
+  ): Promise<void> {
+    const images = avatars.avatars.map((avatar) => avatar.filename);
+    await this.productCategoryModel.updateOne(
+      { _id: productImageDto.productId }, // Need to verify this productId is valid or not
+      { $push: { images } },
+    );
   }
 }
