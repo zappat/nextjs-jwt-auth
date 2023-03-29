@@ -12,6 +12,11 @@ export class Product extends BaseModel {
   })
   description: string;
 
+  @prop({
+    required: [false, 'Product images'],
+  })
+  images: string[];
+
   static get model(): ModelType<Product> {
     return new Product().getModelForClass(Product, { schemaOptions });
   }
