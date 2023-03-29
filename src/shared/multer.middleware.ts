@@ -3,7 +3,7 @@ import { diskStorage } from 'multer';
 
 export const multerOptions = {
   storage: diskStorage({
-    destination: './assets/products/images',
+    destination: './assets/images/products',
     filename: (req, file, cb) => {
       console.log(file);
       cb(

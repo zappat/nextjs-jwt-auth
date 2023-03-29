@@ -4,6 +4,7 @@ import {
   Controller,
   Get,
   HttpCode,
+  HttpException,
   HttpStatus,
   Post,
   UploadedFiles,
@@ -83,6 +84,10 @@ export class ProductController {
     @Body() productImageDto: ProductImageDto,
     @UploadedFiles() avatars: Array<Express.Multer.File>,
   ) {
+    if (!avatars || !avatars.length) {
+      throw new HttpException('No files uploaded', HttpStatus.BAD_REQUEST);
+    }
+
     await this.productService.uploadAvatar(productImageDto, avatars);
     return {
       message: `${avatars.length} files uploaded successfully`,
