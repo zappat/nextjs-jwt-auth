@@ -74,7 +74,7 @@ export class ProductController {
     return await this.productService.createProductCategory(productCategoryDto);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Post('upload')
   @UseInterceptors(
     FileFieldsInterceptor([{ name: 'avatars', maxCount: 10 }], multerOptions),
