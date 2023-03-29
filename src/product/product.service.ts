@@ -45,10 +45,10 @@ export class ProductService {
   }
 
   async getAllProductCategory(): Promise<any> {
-    return await this.productCategoryModel.find({});
+    return await this.productCategoryModel.find({}).lean();
   }
 
-  public async uploadAvatar(
+  public async uploadProduct(
     productImageDto: ProductImageDto,
     avatars: any,
   ): Promise<void> {

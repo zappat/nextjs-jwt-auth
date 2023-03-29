@@ -15,8 +15,13 @@ export class BaseModel extends Typegoose {
 
 export const schemaOptions: SchemaOptions = {
   toJSON: {
+    versionKey: false,    
     virtuals: true,
     getters: true,
+    transform: function (doc, ret, options) {
+      ret.id = ret._id;
+      delete ret._id;      
+    },
   },
   timestamps: true,
 };

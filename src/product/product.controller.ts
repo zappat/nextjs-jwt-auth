@@ -75,8 +75,8 @@ export class ProductController {
     return await this.productService.createProductCategory(productCategoryDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post('upload')
+  @UseGuards(JwtAuthGuard)
   @UseInterceptors(
     FileFieldsInterceptor([{ name: 'avatars', maxCount: 10 }], multerOptions),
   )
@@ -88,7 +88,8 @@ export class ProductController {
       throw new HttpException('No files uploaded', HttpStatus.BAD_REQUEST);
     }
 
-    await this.productService.uploadAvatar(productImageDto, avatars);
+    await this.productService.uploadProduct(productImageDto, avatars);
+
     return {
       message: `${avatars.length} files uploaded successfully`,
       data: null,
