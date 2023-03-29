@@ -53,7 +53,7 @@ export class ProductService {
     avatars: any,
   ): Promise<void> {
     const images = avatars.avatars.map((avatar) => avatar.filename);
-    await this.productCategoryModel.updateOne(
+    await this.productModel.updateOne(
       { _id: productImageDto.productId }, // Need to verify this productId is valid or not
       { $push: { images } },
     );

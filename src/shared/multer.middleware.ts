@@ -6,7 +6,10 @@ export const multerOptions = {
     destination: './assets/products/images',
     filename: (req, file, cb) => {
       console.log(file);
-      cb(null, `${new Date().toISOString()}_${file.originalname}`.replace(/ /g, '_'));
+      cb(
+        null,
+        `${new Date().toISOString()}_${file.originalname}`.replace(/ /g, '_'),
+      );
     },
   }),
   fileFilter: (req, file, cb) => {
