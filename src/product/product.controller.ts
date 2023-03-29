@@ -84,10 +84,10 @@ export class ProductController {
     @Body() productImageDto: ProductImageDto,
     @UploadedFiles() avatars: Array<Express.Multer.File>,
   ) {
-    if (!avatars || !avatars.length) {
-      throw new HttpException('No files uploaded', HttpStatus.BAD_REQUEST);
-    }
-
+    // Need to proper validation checking
+    // if (!avatars || !avatars.length) {
+    //   throw new HttpException('No files uploaded', HttpStatus.BAD_REQUEST);
+    // }
     await this.productService.uploadProduct(productImageDto, avatars);
 
     return {

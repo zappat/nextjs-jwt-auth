@@ -14,6 +14,7 @@ export class Product extends BaseEntity {
 
   @prop({
     required: [false, 'Product images'],
+    default: [],
   })
   images: string[];
 

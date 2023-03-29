@@ -5,7 +5,6 @@ export const multerOptions = {
   storage: diskStorage({
     destination: './assets/images/products',
     filename: (req, file, cb) => {
-      console.log(file);
       cb(
         null,
         `${new Date().toISOString()}_${file.originalname}`.replace(/ /g, '_'),

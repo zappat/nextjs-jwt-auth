@@ -55,7 +55,7 @@ export class ProductService {
     const images = avatars.avatars.map((avatar) => avatar.filename);
     await this.productModel.updateOne(
       { _id: productImageDto.productId }, // Need to verify this productId is valid or not
-      { $push: { images } },
+      { $push: { images: { $each: images } } },
     );
   }
 }
