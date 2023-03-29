@@ -1,7 +1,7 @@
 import { prop, ModelType } from 'typegoose';
-import { BaseModel, schemaOptions } from '../../shared/base.model';
+import { BaseEntity, schemaOptions } from '../../shared/base.entity';
 
-export class Product extends BaseModel {
+export class Product extends BaseEntity {
   @prop({
     required: [true, 'Name is required'],
   })

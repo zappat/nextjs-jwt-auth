@@ -1,8 +1,8 @@
 import { Constants } from 'src/shared/utils/constants';
 import { prop, ModelType } from 'typegoose';
-import { BaseModel, schemaOptions } from '../../shared/base.model';
+import { BaseEntity, schemaOptions } from '../../shared/base.entity';
 
-export class User extends BaseModel {
+export class User extends BaseEntity {
   @prop({
     required: [true, 'First name is required'],
   })

@@ -1,11 +1,11 @@
 import { SchemaOptions } from 'mongoose';
 import { Typegoose, prop, pre } from 'typegoose';
 
-@pre<BaseModel>('update', function (next) {
+@pre<BaseEntity>('update', function (next) {
   this.updatedAt = new Date(Date.now());
   next();
 })
-export class BaseModel extends Typegoose {
+export class BaseEntity extends Typegoose {
   @prop({ default: Date.now() })
   createdAt?: Date;
 
