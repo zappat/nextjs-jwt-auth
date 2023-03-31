@@ -35,7 +35,7 @@ export class User extends BaseEntity {
     required: [false, 'Roles'],
   })
   roles: string[];
-  
+
   static get model(): ModelType<User> {
     return new User().getModelForClass(User, { schemaOptions });
   }
