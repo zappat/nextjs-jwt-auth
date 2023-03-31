@@ -26,6 +26,16 @@ export class User extends BaseEntity {
   })
   password: string;
 
+  @prop({
+    required: [false, 'Avatar'],
+  })
+  avatar: string;
+
+  @prop({
+    required: [false, 'Roles'],
+  })
+  roles: string[];
+  
   static get model(): ModelType<User> {
     return new User().getModelForClass(User, { schemaOptions });
   }

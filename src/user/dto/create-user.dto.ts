@@ -1,5 +1,8 @@
+import { Type } from 'class-transformer';
 import {
+  IsArray,
   IsNotEmpty,
+  IsOptional,
   IsString,
   Matches,
   MaxLength,
@@ -32,4 +35,12 @@ export class CreateUserDto {
     message: 'password too weak',
   })
   password: string;
+
+  @IsString()
+  avatar: string;
+
+  @IsArray()
+  @IsOptional()
+  @Type(() => String)
+  roles: string[];
 }
