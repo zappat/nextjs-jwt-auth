@@ -82,16 +82,15 @@ export class ProductController {
   )
   async upload(
     @Body() productImageDto: ProductImageDto,
-    @UploadedFiles() images: Array<Express.Multer.File>,
+    @UploadedFiles() images: any,
   ) {
     // Need to proper validation checking
     // if (!images || !images.length) {
     //   throw new HttpException('No files uploaded', HttpStatus.BAD_REQUEST);
     // }
     await this.productService.uploadProduct(productImageDto, images);
-
     return {
-      message: `${images.length} files uploaded successfully`,
+      message: `${images?.images.length} files uploaded successfully`,
       data: null,
     };
   }
