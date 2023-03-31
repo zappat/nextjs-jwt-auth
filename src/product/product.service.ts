@@ -50,12 +50,12 @@ export class ProductService {
 
   public async uploadProduct(
     productImageDto: ProductImageDto,
-    avatars: any,
+    images: any,
   ): Promise<void> {
-    const images = avatars.avatars.map((avatar) => avatar.filename);
+    const allImages = images.images.map((avatar) => avatar.filename);
     await this.productModel.updateOne(
       { _id: productImageDto.productId }, // Need to verify this productId is valid or not
-      { $push: { images: { $each: images } } },
+      { $push: { images: { $each: allImages } } },
     );
   }
 }

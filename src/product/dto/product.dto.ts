@@ -29,6 +29,14 @@ export class ProductDto {
   @IsString()
   readonly description: string;
 
+  @ApiProperty({
+    example: 'Coriander',
+    description: 'This is name of product category',
+    required: true,
+  })
+  @IsString()
+  readonly categoryId: string;
+
   @IsArray()
   @IsOptional()
   @Type(() => String)

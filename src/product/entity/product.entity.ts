@@ -13,6 +13,11 @@ export class Product extends BaseEntity {
   description: string;
 
   @prop({
+    required: [true, 'Category is required'],
+  })
+  categoryId: string;
+
+  @prop({
     required: [false, 'Product images'],
     default: [],
   })

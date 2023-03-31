@@ -78,20 +78,20 @@ export class ProductController {
   @Post('upload')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(
-    FileFieldsInterceptor([{ name: 'avatars', maxCount: 10 }], multerOptions),
+    FileFieldsInterceptor([{ name: 'images', maxCount: 10 }], multerOptions),
   )
   async upload(
     @Body() productImageDto: ProductImageDto,
-    @UploadedFiles() avatars: Array<Express.Multer.File>,
+    @UploadedFiles() images: Array<Express.Multer.File>,
   ) {
     // Need to proper validation checking
-    // if (!avatars || !avatars.length) {
+    // if (!images || !images.length) {
     //   throw new HttpException('No files uploaded', HttpStatus.BAD_REQUEST);
     // }
-    await this.productService.uploadProduct(productImageDto, avatars);
+    await this.productService.uploadProduct(productImageDto, images);
 
     return {
-      message: `${avatars.length} files uploaded successfully`,
+      message: `${images.length} files uploaded successfully`,
       data: null,
     };
   }
