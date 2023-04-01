@@ -29,7 +29,7 @@ export class ProductService {
         ...product,
         images: product.images.map(
           (image) =>
-            `http://localhost:${process.env.PORT}/products/images/${image}`,
+            `http://localhost:${process.env.PORT}/images/products/${image}`,
         ),
       };
     });
