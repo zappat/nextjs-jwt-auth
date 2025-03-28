@@ -42,10 +42,15 @@ async function bootstrap() {
 
   await app.listen(AppModule.port);
 
-  let baseUrl = app.getHttpServer().address().address;
-  if (baseUrl === '0.0.0.0' || baseUrl === '::') {
+  let baseUrl = app.getHttpServer().address();
+  if (typeof baseUrl === 'string') {
+    // baseUrl is a string (in case of IPv6 `::` or `0.0.0.0`)
     baseUrl = 'localhost';
+  } else {
+    // baseUrl is an AddressInfo object
+    baseUrl = baseUrl.address === '::' || baseUrl.address === '0.0.0.0' ? 'localhost' : baseUrl.address;
   }
+
   logger.log(`Listening to http://${baseUrl}:${AppModule.port}${globalPrefix}`);
   if (AppModule.isDev) {
     logger.log(
