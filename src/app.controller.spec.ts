@@ -11,6 +11,7 @@ describe('AppController', () => {
       providers: [AppService],
     }).compile();
 
+    // appController = app.get<AppContssroller>(AppController);
     appController = app.get<AppController>(AppController);
   });
 
